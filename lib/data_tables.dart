@@ -37,6 +37,8 @@ class NativeDataTable extends StatelessWidget {
     this.actions,
     this.firstRowIndex = 0,
     this.totalCount,
+    this.firstItem,
+    this.viewdItems,
     this.selectedActions,
     this.onRefresh,
     this.mobileFetchNextRows = 100,
@@ -65,6 +67,8 @@ class NativeDataTable extends StatelessWidget {
     this.selectedActions,
     this.firstRowIndex = 0,
     this.totalCount,
+    this.firstItem,
+    this.viewdItems,
     this.onRefresh,
     this.mobileFetchNextRows = 100,
     this.handlePrevious,
@@ -82,6 +86,8 @@ class NativeDataTable extends StatelessWidget {
   final ValueChanged<int?>? onRowsPerPageChanged;
   final int rowsPerPage;
   final int? totalCount;
+  final int? firstItem;
+  final int? viewdItems;
   final int firstRowIndex;
 
   /// Visible on Tablet/Desktop
@@ -115,6 +121,8 @@ class NativeDataTable extends StatelessWidget {
         handlePrevious: handlePrevious,
         rowsPerPage: rowsPerPage,
         totalCount: totalCount,
+        firstItem: firstItem,
+        viewdItems: viewdItems,
         onRowsPerPageChanged: onRowsPerPageChanged,
         sortColumnIndex: sortColumnIndex,
         sortAscending: sortAscending!,

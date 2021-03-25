@@ -15,6 +15,8 @@ class StatelessDataTable extends StatelessWidget {
     this.onSelectAll,
     this.firstRowIndex = 0,
     this.totalCount,
+    this.firstItem,
+    this.viewdItems,
     this.onPageChanged,
     this.shrinkWrap = false,
     this.selectedActions,
@@ -53,6 +55,8 @@ class StatelessDataTable extends StatelessWidget {
   final ValueChanged<int?>? onPageChanged;
   final int rowsPerPage;
   final int? totalCount;
+  final int? firstItem;
+  final int? viewdItems;
   static const int defaultRowsPerPage = 10;
   final List<int> availableRowsPerPage;
   final ValueChanged<int?>? onRowsPerPageChanged;
@@ -178,8 +182,8 @@ class StatelessDataTable extends StatelessWidget {
     footerWidgets.addAll(<Widget>[
       Container(width: 32.0),
       Text(localizations.pageRowsInfoTitle(
-          firstRowIndex + 1,
-          firstRowIndex + rowsPerPage,
+          firstItem ?? (firstRowIndex + 1),
+          viewdItems ?? (firstRowIndex + rowsPerPage),
           totalCount ?? rows.length,
           rowCountApproximate)),
       Container(width: 32.0),
