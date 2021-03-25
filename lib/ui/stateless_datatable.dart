@@ -182,7 +182,7 @@ class StatelessDataTable extends StatelessWidget {
           icon: const Icon(Icons.chevron_left),
           padding: EdgeInsets.zero,
           tooltip: localizations.previousPageTooltip,
-          onPressed: firstRowIndex <= 0 ? null : handlePrevious),
+          onPressed: handlePrevious),
       Container(width: 24.0),
       IconButton(
           icon: const Icon(Icons.chevron_right),
