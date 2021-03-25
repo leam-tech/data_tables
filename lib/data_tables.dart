@@ -36,6 +36,7 @@ class NativeDataTable extends StatelessWidget {
     this.tabletBreakpoint = const Size(480.0, 480.0),
     this.actions,
     this.firstRowIndex = 0,
+    this.totalCount,
     this.selectedActions,
     this.onRefresh,
     this.mobileFetchNextRows = 100,
@@ -63,6 +64,7 @@ class NativeDataTable extends StatelessWidget {
     this.actions,
     this.selectedActions,
     this.firstRowIndex = 0,
+    this.totalCount,
     this.onRefresh,
     this.mobileFetchNextRows = 100,
     this.handlePrevious,
@@ -79,7 +81,9 @@ class NativeDataTable extends StatelessWidget {
   final ValueChanged<bool?>? onSelectAll;
   final ValueChanged<int?>? onRowsPerPageChanged;
   final int rowsPerPage;
+  final int? totalCount;
   final int firstRowIndex;
+
   /// Visible on Tablet/Desktop
   final Widget? header;
   final List<DataColumn> columns;
@@ -90,6 +94,7 @@ class NativeDataTable extends StatelessWidget {
   final int mobileFetchNextRows;
   final RefreshCallback? onRefresh;
   final VoidCallback? handlePrevious, handleNext;
+
   /// Set this to [true] for using this with a api
   final bool rowCountApproximate;
   final Widget? noItems;
@@ -109,6 +114,7 @@ class NativeDataTable extends StatelessWidget {
         handleNext: handleNext,
         handlePrevious: handlePrevious,
         rowsPerPage: rowsPerPage,
+        totalCount: totalCount,
         onRowsPerPageChanged: onRowsPerPageChanged,
         sortColumnIndex: sortColumnIndex,
         sortAscending: sortAscending!,
