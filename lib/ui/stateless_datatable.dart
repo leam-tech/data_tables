@@ -237,21 +237,28 @@ class StatelessDataTable extends StatelessWidget {
                 ),
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              dragStartBehavior: dragStartBehavior,
-              child: Builder(
-                builder: (BuildContext context) {
-                  final rows = _getRows(firstRowIndex, rowsPerPage);
-                  return DataTable(
-                    key: _tableKey,
-                    columns: columns,
-                    sortColumnIndex: sortColumnIndex,
-                    sortAscending: sortAscending,
-                    onSelectAll: onSelectAll,
-                    rows: rows,
-                  );
-                },
+            LayoutBuilder(
+              builder: (context, constraints) => SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                dragStartBehavior: dragStartBehavior,
+                child: Builder(
+                  builder: (BuildContext context) {
+                    final rows = _getRows(firstRowIndex, rowsPerPage);
+                    return ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minWidth: constraints.minWidth,
+                      ),
+                      child: DataTable(
+                        key: _tableKey,
+                        columns: columns,
+                        sortColumnIndex: sortColumnIndex,
+                        sortAscending: sortAscending,
+                        onSelectAll: onSelectAll,
+                        rows: rows,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             DefaultTextStyle(
@@ -310,22 +317,29 @@ class StatelessDataTable extends StatelessWidget {
           ),
           Expanded(
               flex: 8,
-              child: Scrollbar(
-                  child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: DataTable(
-                        key: _tableKey,
-                        columns: columns,
-                        sortColumnIndex: sortColumnIndex,
-                        sortAscending: sortAscending,
-                        onSelectAll: onSelectAll,
-                        rows: _getRows(firstRowIndex, rowsPerPage)),
-                  ),
-                ],
-              ))),
+              child: LayoutBuilder(
+                builder: (context, constraints) => Scrollbar(
+                    child: ListView(
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: constraints.minWidth,
+                        ),
+                        child: DataTable(
+                            key: _tableKey,
+                            columns: columns,
+                            sortColumnIndex: sortColumnIndex,
+                            sortAscending: sortAscending,
+                            onSelectAll: onSelectAll,
+                            rows: _getRows(firstRowIndex, rowsPerPage)),
+                      ),
+                    ),
+                  ],
+                )),
+              )),
           DefaultTextStyle(
             style: footerTextStyle!,
             child: IconTheme.merge(
