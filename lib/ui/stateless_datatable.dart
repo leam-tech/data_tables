@@ -213,9 +213,9 @@ class StatelessDataTable extends StatelessWidget {
               container: true,
               child: DefaultTextStyle(
                 style: _selectedRowCount > 0
-                    ? themeData.textTheme.subhead!
+                    ? themeData.textTheme.subtitle2!
                         .copyWith(color: themeData.accentColor)
-                    : themeData.textTheme.title!
+                    : themeData.textTheme.headline6!
                         .copyWith(fontWeight: FontWeight.w400),
                 child: IconTheme.merge(
                   data: const IconThemeData(opacity: 0.54),
@@ -291,9 +291,9 @@ class StatelessDataTable extends StatelessWidget {
             container: true,
             child: DefaultTextStyle(
               style: _selectedRowCount > 0
-                  ? themeData.textTheme.subhead!
+                  ? themeData.textTheme.subtitle2!
                       .copyWith(color: themeData.accentColor)
-                  : themeData.textTheme.title!
+                  : themeData.textTheme.headline6!
                       .copyWith(fontWeight: FontWeight.w400),
               child: IconTheme.merge(
                 data: const IconThemeData(opacity: 0.54),

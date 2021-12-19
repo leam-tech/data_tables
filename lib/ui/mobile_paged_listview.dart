@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart' as cupertino;
+import 'package:flutter/material.dart';
 
 class PagedListView extends StatefulWidget {
   const PagedListView({
@@ -209,7 +209,7 @@ class _NativePagedListViewState extends State<PagedListView> {
                           child: FlatButton(
                             child: Text(
                               "Close",
-                              style: Theme.of(context).textTheme.headline,
+                              style: Theme.of(context).textTheme.headline5,
                             ),
                             onPressed: () {
                               _sortController!.close();
