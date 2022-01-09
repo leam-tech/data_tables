@@ -32,6 +32,7 @@ class StatelessDataTable extends StatelessWidget {
     ],
     this.onRowsPerPageChanged,
     this.dragStartBehavior = DragStartBehavior.down,
+    required this.showCellCircularProgress,
   })  : assert(columns.isNotEmpty),
         assert(sortColumnIndex == null ||
             (sortColumnIndex >= 0 && sortColumnIndex < columns.length)),
@@ -64,6 +65,7 @@ class StatelessDataTable extends StatelessWidget {
   final int firstRowIndex;
   final bool rowCountApproximate;
   final Map<int, DataRow> _rows = <int, DataRow>{};
+  final bool showCellCircularProgress;
 
   DataRow _getBlankRowFor(int index) => DataRow.byIndex(
       index: index,
@@ -99,7 +101,7 @@ class StatelessDataTable extends StatelessWidget {
         } catch (e) {
           print("Row not found => $e");
         }
-        if (row == null && !haveProgressIndicator) {
+        if (row == null && !haveProgressIndicator && showCellCircularProgress) {
           row ??= _getProgressIndicatorRowFor(index);
           haveProgressIndicator = true;
         }

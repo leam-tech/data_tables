@@ -49,6 +49,7 @@ class NativeDataTable extends StatelessWidget {
     this.mobileIsLoading,
     this.mobileSlivers,
     this.alwaysShowDataTable = false,
+    this.showCellCircularProgress = false,
   });
 
   NativeDataTable.builder({
@@ -78,6 +79,7 @@ class NativeDataTable extends StatelessWidget {
     this.mobileIsLoading,
     this.mobileSlivers,
     this.alwaysShowDataTable = false,
+    this.showCellCircularProgress = false,
   }) : rows = _buildRows(itemCount, itemBuilder);
 
   final int? sortColumnIndex;
@@ -89,6 +91,7 @@ class NativeDataTable extends StatelessWidget {
   final int? firstItem;
   final int? viewdItems;
   final int firstRowIndex;
+  final bool showCellCircularProgress;
 
   /// Visible on Tablet/Desktop
   final Widget? header;
@@ -141,6 +144,7 @@ class NativeDataTable extends StatelessWidget {
                   ),
           )),
         selectedActions: selectedActions,
+        showCellCircularProgress: showCellCircularProgress,
       );
     }
 
